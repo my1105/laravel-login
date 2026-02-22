@@ -50,9 +50,11 @@
                            autofocus
                            value="">
                 </div>
-                <p class="text-sm text-red-600 font-medium mt-1 mb-6">
-                    メールアドレスを入力してください
-                </p>
+                @error('email')
+                    <p class="text-sm text-red-600 font-medium mt-1 mb-6">
+                        {{ $message }}
+                    </p>
+                @enderror
         </div>
 
             <!-- Password Input -->
@@ -73,9 +75,11 @@
                         <i class="fa-regular fa-eye" id="eye-icon"></i>
                     </button>
                 </div>
-                <p class="text-sm text-red-600 font-medium mt-1 mb-6">
-                    パスワードを入力してください
-                </p>
+                @error('password')
+                    <p class="text-sm text-red-600 font-medium mt-1 mb-6">
+                        {{ $message }}
+                    </p>
+                @enderror
         </div>
 
             <!-- Remember Me & Forgot Password -->
