@@ -25,14 +25,16 @@
         </header>
 
         <!-- Login Form -->
-        <form action="{{ route('login.login') }}" method="post" class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 animate-slide-up">
+        <form action="{{ route('login.index') }}" method="post" class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 animate-slide-up">
             @csrf
-            <div class="mb-6">
-                <div class="bg-red-100 text-red-600 text-sm rounded-lg px-4 py-3 flex items-center gap-2" role="alert">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                    メールアドレスまたはパスワードが異なります
+            @error('login')
+                <div class="mb-6">
+                    <div class="bg-red-100 text-red-600 text-sm rounded-lg px-4 py-3 flex items-center gap-2" role="alert">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        {{ $message }}
                 </div>
             </div>
+            @enderror
 
             <!-- Email Input -->
             <div class="mb-6">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -22,5 +23,21 @@ class LoginController extends Controller
             'password.required' => 'パスワードを入力してください',
         ]);
 
+        if (Auth::attempt($validated)) {
+            return redirect()->route('dashboard');
+        } else {
+            return back()->withErrors([
+                'login' => 'メールアドレスまたはパスワードが正しくありません',
+            ]);
+        }
+
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login.index');
+    }
+
+
 }
